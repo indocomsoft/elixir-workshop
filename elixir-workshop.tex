@@ -973,13 +973,28 @@ end
 
 \begin{frame}[fragile]{Comprehension (cont.)}
   \begin{itemize}
-    \item Using the \mintinline{elixir}{:into}, result of a comprehension can be inserted into different data structures:
+    \item Using \mintinline{elixir}{:into}, result of a comprehension can be inserted into different data structures:
           \begin{minted}{elixir}
 for <<c <- " hello world ">>, c != ?\s, into: "", do: <<c>>
 
 for {key, val} <- %{"a" => 1, "b" => 2}, into: %{}, do: {key, val * val}
   \end{minted}
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Comprehension (cont.)}
+  Using comprehension, we can even implement quicksort!
+  \begin{minted}{elixir}
+defmodule Sort do
+  def qsort([]) do
+    []
+  end
+
+  def qsort([x | xs]) do
+    qsort(for a <- xs when a < x) ++ [x] ++ qsort(for a <- xs when a >= x)
+  end
+end
+  \end{minted}
 \end{frame}
 
 \section{Other Useful Features}
