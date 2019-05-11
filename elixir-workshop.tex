@@ -827,7 +827,7 @@ defmodule Fact do
       0 ->
         1
 
-      x when is_number(x) and x > 0 ->
+      x when is_integer(x) and x > 0 ->
         n * fac(n - 1)
     end
   end
@@ -875,7 +875,7 @@ end
   \begin{minted}{elixir}
 defmodule Fact do
   def fac(0), do: 1
-  def fac(n) when is_number(n) and n > 0, do: n * fac(n - 1)
+  def fac(n) when is_integer(n) and n > 0, do: n * fac(n - 1)
 end
   \end{minted}
 \end{frame}
@@ -883,7 +883,7 @@ end
 \begin{frame}[fragile]{And Tail Call Recursions!}
   \begin{minted}{elixir}
 defmodule Fact do
-  def fac(n, acc \\ 1) when is_number(n) and is_number(acc) do
+  def fac(n, acc \\ 1) when is_integer(n) and is_integer(acc) and acc > 0 do
     case n do
       0 -> acc
       n when n > 0 -> fac(n - 1, acc * n)
@@ -1122,7 +1122,7 @@ end
 \begin{frame}[fragile]{Regular Expressions}
   \begin{itemize}
     \item Elixir provides Perl-compatible regexes, as implemented by the PCRE library.
-    \item \textbf{A word of caution}: ``Some poeple, when confronted with a problem, think I know, I'll use regular expressions. Now they have two problems'' (Zawinski, 1997)\footnote{There is also an interesting read at \url{https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/}}
+    \item \textbf{A word of caution}: ``Some people, when confronted with a problem, think I know, I'll use regular expressions. Now they have two problems'' (Zawinski, 1997)\footnote{There is also an interesting read at \url{https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/}}
     \item There exists a \mintinline{elixir}{Regex} module in Elixir, as well as the regex match operator \mintinline{elixir}{=~}, and the \texttt{~r} sigil to specify precompiled regex.
   \end{itemize}
 \end{frame}
