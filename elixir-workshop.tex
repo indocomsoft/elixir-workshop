@@ -991,7 +991,7 @@ defmodule Sort do
   end
 
   def qsort([x | xs]) do
-    qsort(for a <- xs when a < x) ++ [x] ++ qsort(for a <- xs when a >= x)
+    qsort(for a when a < x <- xs, do: a) ++ [x] ++ qsort(for a when a >= x <- xs, do: a)
   end
 end
   \end{minted}
