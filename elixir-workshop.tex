@@ -116,7 +116,7 @@ defmodule Fact do
     1
   end
 
-  def fac(n) when n > 0, is_integer(n) do
+  def fac(n) when n > 0 and is_integer(n) do
     n * fac(n - 1)
   end
 end
@@ -185,7 +185,7 @@ Erlang/OTP 21 ...
 Eshell ...
   \end{minted}
   \begin{minted}{erlang}
-> io:fwrite("Hello, world!~n")
+> io:fwrite("Hello, world!~n").
 Hello, world!
 ok
   \end{minted}
@@ -276,7 +276,7 @@ foo.()
 \subsection{Organising Your Code}
 \begin{frame}{Organising Your Code}
   \begin{itemize}
-    \item As a functional language, Elixir relies heavily on functios.
+    \item As a functional language, Elixir relies heavily on functions.
     \item Due to immutable nature of data, typical Elixir program consists of many small functions.
     \item Multiple functions are grouped together into modules.
   \end{itemize}
